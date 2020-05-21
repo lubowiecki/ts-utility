@@ -8,12 +8,12 @@
     "build": "tsc",
     "test": "jest --detectOpenHandles"
   },
+  "prepublishOnly": "tsc",
   "husky": {
     "hooks": {
       "pre-commit": "pretty-quick --staged"
     }
   },
-  "prepublish": "tsc",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/lubowiecki/ts-utility.git"
