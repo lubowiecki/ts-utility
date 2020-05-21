@@ -1,0 +1,51 @@
+{
+  "name": "@lubowiecki/ts-utility",
+  "version": "1.0.0",
+  "description": "Typescript utility",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "test": "jest --detectOpenHandles"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "pretty-quick --staged"
+    }
+  },
+  "prepublish": "tsc",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lubowiecki/ts-utility.git"
+  },
+  "keywords": [
+    "typescript utility",
+    "typescript helpers",
+    "typescript ddd",
+    "typescript value object",
+    "typescript entity",
+    "typescript maybe"
+  ],
+  "author": "Dawid Lubowiecki",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lubowiecki/ts-utility/issues"
+  },
+  "homepage": "https://github.com/lubowiecki/ts-utility#readme",
+  "dependencies": {
+    "ramda": "^0.27.0"
+  },
+  "devDependencies": {
+    "@types/jest": "^25.2.3",
+    "@types/ramda": "^0.27.6",
+    "husky": "^4.2.5",
+    "jest": "^26.0.1",
+    "prettier": "^2.0.5",
+    "pretty-quick": "^2.0.1",
+    "ts-jest": "^26.0.0",
+    "tslint": "^6.1.2",
+    "tslint-config-prettier": "^1.18.0",
+    "tslint-sonarts": "^1.9.0",
+    "typescript": "^3.9.3"
+  }
+}
