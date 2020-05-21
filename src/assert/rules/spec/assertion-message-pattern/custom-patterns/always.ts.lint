@@ -1,0 +1,4 @@
+always(condition);
+                ~ [Expected code]
+always(condition, '');
+                  ~~ [Assertion code has to match /^\[abcd-efgh\]$/.]

@@ -1,0 +1,16 @@
+always(condition === true, 'code');
+always(condition !== true, 'code');
+always(something1 === something2, 'code');
+always(something1 !== something2, 'code');
+always(something1 === something2 || true, 'code');
+                                    ~~~~ [Assertions cannot be called with condition argument "true" directly]
+always(something1 !== something2 || false, 'code');
+                                    ~~~~~ [Assertions cannot be called with condition argument "false" directly]
+always(something1 === something2 || 0 < 1 || true, 'code');
+                                             ~~~~ [Assertions cannot be called with condition argument "true" directly]
+always(something1 !== something2 || 1 < 0 || false, 'code');
+                                             ~~~~~ [Assertions cannot be called with condition argument "false" directly]
+always(true, 'code');
+       ~~~~ [Assertions cannot be called with condition argument "true" directly]
+always(false, 'code');
+       ~~~~~ [Assertions cannot be called with condition argument "false" directly]

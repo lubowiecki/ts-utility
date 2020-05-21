@@ -1,12 +1,14 @@
 {
   "name": "@lubowiecki/ts-utility",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Typescript utility",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
     "build": "tsc",
-    "test": "jest --detectOpenHandles"
+    "test": "npm run test:rules && npm run test:integration",
+    "test:integration": "jest --detectOpenHandles",
+    "test:rules": "npm run build && tslint --test src/assert/**/tslint.json"
   },
   "prepublishOnly": "tsc",
   "husky": {
@@ -36,7 +38,10 @@
   },
   "homepage": "https://github.com/lubowiecki/ts-utility#readme",
   "dependencies": {
-    "ramda": "^0.27.0"
+    "ramda": "^0.27.0",
+    "randexp": "^0.5.3",
+    "tslint": "^6.1.2",
+    "typescript": "^3.9.3"
   },
   "devDependencies": {
     "@types/jest": "^25.2.3",
@@ -46,9 +51,7 @@
     "prettier": "^2.0.5",
     "pretty-quick": "^2.0.1",
     "ts-jest": "^26.0.0",
-    "tslint": "^6.1.2",
     "tslint-config-prettier": "^1.18.0",
-    "tslint-sonarts": "^1.9.0",
-    "typescript": "^3.9.3"
+    "tslint-sonarts": "^1.9.0"
   }
 }

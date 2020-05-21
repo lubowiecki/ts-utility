@@ -5,3 +5,5 @@ export * from './logic/is-promise';
 export * from './types/maybe';
 export * from './models/value-object/value-object';
 export * from './models/entity/entity';
+export {always} from './assert/always';
+export {never} from './assert/never';

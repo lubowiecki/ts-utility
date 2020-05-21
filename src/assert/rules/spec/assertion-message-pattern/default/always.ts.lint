@@ -1,0 +1,3 @@
+always(condition === true);
+always(condition !== true);
+always(condition !== true, 'test');

@@ -1,0 +1,6 @@
+{
+  "rules": {
+    "assertions-code": true
+  },
+  "rulesDirectory": ["../../../../../../dist/assert/rules"]
+}

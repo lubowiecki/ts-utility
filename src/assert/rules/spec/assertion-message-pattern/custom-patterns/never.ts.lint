@@ -1,0 +1,4 @@
+never(condition);
+               ~ [Expected code]
+never(condition, '');
+                 ~~ [Assertion code has to match /^\[abcd-efgh\]$/.]
