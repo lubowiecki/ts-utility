@@ -34,6 +34,10 @@ describe('is object', () => {
     expect(isObject(1)).toBe(false);
   });
 
+  it('array', () => {
+    expect(isObject([])).toBe(false);
+  });
+
   it('new promise', () => {
     expect(isObject(new Promise(() => ''))).toBe(false);
   });
