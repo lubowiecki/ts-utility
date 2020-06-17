@@ -1,26 +1,28 @@
 import {Entity} from './entity';
 import {ValueObject} from '../value-object/value-object';
 
-interface TestedEntityIdProps {
+interface IdProps {
   id: string;
 }
 
-class TestedEntityId extends ValueObject<TestedEntityIdProps> {
-  private constructor(protected readonly props: TestedEntityIdProps) {
+class Id extends ValueObject<IdProps> {
+  private constructor(protected readonly props: IdProps) {
     super(props);
   }
 
-  static create(id: string): TestedEntityId {
-    return new TestedEntityId({id});
+  static create(id: string): Id {
+    return new Id({id});
   }
 }
 
 interface TestedEntityDto {
-  id: string;
+  id: Id;
+  value: string;
 }
 
 interface TestedEntityProps {
-  id: ValueObject<TestedEntityIdProps>;
+  id: Id;
+  value: string;
 }
 
 class TestedEntity extends Entity<TestedEntityProps> {
@@ -29,37 +31,47 @@ class TestedEntity extends Entity<TestedEntityProps> {
   }
 
   static create(testedEntityDto: TestedEntityDto): TestedEntity {
-    const testedEntityProps: TestedEntityProps = {
-      id: TestedEntityId.create(testedEntityDto.id),
-    };
-
-    return new TestedEntity(testedEntityProps);
+    return new TestedEntity(testedEntityDto);
   }
 }
 
 describe('Entity', () => {
   it('should equals by reference', () => {
-    const a = TestedEntity.create({id: '123'});
+    const id = Id.create('123');
+    const a = TestedEntity.create({id, value: 'example'});
     const b = a;
 
     expect(a.equals(b)).toBe(true);
   });
 
   it('should equals by id', () => {
-    const a = TestedEntity.create({id: '123'});
-    const b = TestedEntity.create({id: '123'});
+    const id1 = Id.create('123');
+    const id2 = Id.create('123');
+    const a = TestedEntity.create({id: id1, value: 'example1'});
+    const b = TestedEntity.create({id: id2, value: 'example2'});
 
     expect(a.equals(b)).toBe(true);
   });
 
+  it('should not equal if id1 not equals id2', () => {
+    const id1 = Id.create('123');
+    const id2 = Id.create('1234');
+    const a = TestedEntity.create({id: id1, value: 'example'});
+    const b = TestedEntity.create({id: id2, value: 'example'});
+
+    expect(a.equals(b)).toBe(false);
+  });
+
   it('should not equals if compared object is null', () => {
-    const a = TestedEntity.create({id: '123'});
+    const id = Id.create('123');
+    const a = TestedEntity.create({id, value: 'example'});
 
     expect(a.equals(null as any)).toBe(false);
   });
 
   it('should not equals if compared object is not Entity', () => {
-    const a = TestedEntity.create({id: '123'});
+    const id = Id.create('123');
+    const a = TestedEntity.create({id, value: 'example'});
 
     expect(a.equals('string' as any)).toBe(false);
   });

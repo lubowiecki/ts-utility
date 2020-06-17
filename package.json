@@ -1,16 +1,18 @@
 {
   "name": "@lubowiecki/ts-utility",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Typescript utility",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
-    "build": "tsc",
+    "build": "tsc && npm run docs:build",
     "test": "npm run test:rules && npm run test:integration",
     "test:integration": "jest --detectOpenHandles",
-    "test:rules": "npm run build && tslint --test src/assert/**/tslint.json"
+    "test:rules": "npm run build && tslint --test src/assert/**/tslint.json",
+    "docs:build": "npx typedoc",
+    "docs:serve": "npx serve dist/docs"
   },
-  "prepublishOnly": "tsc",
+  "prepublishOnly": "npm run build",
   "husky": {
     "hooks": {
       "pre-commit": "pretty-quick --staged"

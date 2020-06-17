@@ -32,6 +32,13 @@ describe('ValueObject', () => {
     expect(a.equals(b)).toBe(true);
   });
 
+  it('should not equals if structure is different', () => {
+    const a = TestedValueObject.create('name', 'cityName1');
+    const b = TestedValueObject.create('name', 'cityName2');
+
+    expect(a.equals(b)).toBe(false);
+  });
+
   it('should not equals if compared object is null', () => {
     const a = TestedValueObject.create('name', 'cityName');
 

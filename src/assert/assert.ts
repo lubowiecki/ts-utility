@@ -1,3 +1,6 @@
+/**
+ * Assert condition and throw Client Error with custom code if condition is false
+ */
 export function assert(condition: boolean, code: string): asserts condition {
   if (typeof condition !== 'boolean') {
     throw new TypeError(`Argument 'condition' must be a boolean.`);
