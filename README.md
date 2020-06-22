@@ -1,16 +1,20 @@
 # ts-utility
 
-1. [Assert](#assert)
-2. [Logic](#logic)
-   1. [isDefined](#isdefined)
-   2. [isFunction](#isfunction)
-   3. [isObject](#isobject)
-   4. [isPromise](#ispromise)
-3. [Models](#models)
-   1. [Entity](#entity)
-   2. [Value object](#value-object)
-4. [Types](#types)
-   1. [Maybe](#maybe)
+- [ts-utility](#ts-utility)
+  - [Assert](#assert)
+    - [Usage](#usage)
+      - [TypeScript](#typescript)
+      - [Tslint rules](#tslint-rules)
+  - [Logic](#logic)
+    - [isDefined](#isdefined)
+    - [isFunction](#isfunction)
+    - [isObject](#isobject)
+    - [isPromise](#ispromise)
+  - [Models](#models)
+    - [Entity](#entity)
+    - [Value object](#value-object)
+  - [Types](#types)
+    - [Maybe<T>](#maybet)
 
 ## Assert
 
@@ -215,22 +219,21 @@ it('should not equals if structure is different', () => {
 
 ### Maybe<T>
 
-Marks value as Optional, it can be T, undefined, null or void.
+Marks value as nullable, it can be T, undefined, null.
 It forces null check on every usage of value.
 
 ```typescript
 interface Example {
   a: string;
-  bOptional: Maybe<string>;
+  b?: Maybe<string>;
 }
 
 const obj: Example = {
   a: 'string',
-  bOptional: 'maybeString',
+  b: 'maybeString',
 };
 
-const a = obj.a;
-const b = obj.bOptional;
+const {a, b} = obj;
 
 a.length; // Ok
 b.length; // Error, b can be undefined
